@@ -1,0 +1,28 @@
+{
+  "name": "subthrower",
+  "version": "1.0.0",
+  "description": "Ground breaking weather app",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-livereload": "^3.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aballinger1981/SubThrower.git"
+  },
+  "keywords": [
+    "best",
+    "evAr"
+  ],
+  "author": "Redbeard",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aballinger1981/SubThrower/issues"
+  },
+  "homepage": "https://github.com/aballinger1981/SubThrower#readme"
+}
