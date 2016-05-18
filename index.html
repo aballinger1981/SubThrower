@@ -9,8 +9,8 @@
   <input type='number' ng-model="temperature" />
   <input type='number' ng-model="zip" />
   <button ng-click='getTempByZip(zip)'>Submit</button>
-  <div>{{temperature  | number:0}}</div>
-  
+  <div>Temperature: {{temperature  | number:0}}</div>
+  <div>Humidity: {{humidity | number:0}}%</div>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
   <script src="app.js"></script>
 </body>

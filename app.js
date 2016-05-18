@@ -2,27 +2,28 @@
   var app = angular.module("SubThrower", []);
 
   app.controller("subThrowController", ['$scope', '$http', function ($scope, $http) {
-    $scope.temperature = '79';
-    //var zip = $scope.zip;
-    
-    
-    getTempByZip(19067, function (temperature) {
-      $scope.temperature = temperature;
+    // intial default weather
+    getWeatherByZip(19067, function (data) {
+      $scope.temperature = data.main.temp;
+      $scope.humidity = data.main.humidity;
     });
     
-    $scope.getTempByZip = function (zip) {
-      getTempByZip(zip, function (temperature) {
-        $scope.temperature = temperature;
+    // update with zip code provided
+    $scope.updateWeather = function (zip) {
+      getWeatherByZip(zip, function (data) {
+        $scope.temperature = data.main.temp;
+        $scope.humidity = data.main.humidity;
       });
     };
     
-    function getTempByZip(zip, callback) {
+    function getWeatherByZip(zip, callback) {
       zip = zip ? zip : 19067;
 
       $http.get('http://api.openweathermap.org/data/2.5/weather?zip=' + zip + ',us&APPID=70de8e260c0bef512c9c05dbf2058280').then(function (response) {
         var temp = response.data.main.temp;
+        var humidity = response.data.main.humidity;
         var temperature = 1.8 * (temp - 273) + 32;
-        callback(temperature);
+        callback(response.data);
       }, function () {
         alert('An error has occured.');
         callback(2);
