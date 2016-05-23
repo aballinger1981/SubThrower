@@ -3,9 +3,9 @@ var browserSync = require('browser-sync').create();
 
 // create a task that ensures the `js` task is complete before
 // reloading browsers
-gulp.task('reload-browser', function(){
-    console.log(browserSync.reload());
-});
+// gulp.task('reload-browser', function(){
+//     console.log(browserSync.reload());
+// });
 
 // use default task to launch Browsersync and watch JS files
 gulp.task('serve', function () {
@@ -22,4 +22,5 @@ gulp.task('serve', function () {
     // all browsers reload after tasks are complete.
     // gulp.watch("*.js", ['reload-browser']);
   gulp.watch("*.html").on("change", browserSync.reload);
+  gulp.watch("*.js").on("change", browserSync.reload);
 });
