@@ -5,6 +5,7 @@
   "main": "app.js",
   "dependencies": {},
   "devDependencies": {
+    "browser-sync": "^2.12.8",
     "gulp": "^3.9.1",
     "gulp-livereload": "^3.8.1"
   },

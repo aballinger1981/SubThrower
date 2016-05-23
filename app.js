@@ -1,4 +1,5 @@
 (function () {
+  alert('hellloo')
   var app = angular.module("SubThrower", []);
 
   app.controller("subThrowController", ['$scope', '$http', function ($scope, $http) {
