@@ -8,7 +8,7 @@ var browserSync = require('browser-sync').create();
 // });
 
 // use default task to launch Browsersync and watch JS files
-gulp.task('serve', function () {
+gulp.task('autoReload', function () {
 
     // Serve files from the root of this project
     browserSync.init({
