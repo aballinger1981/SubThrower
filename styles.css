@@ -1,0 +1,20 @@
+.red {
+  background-image: url('images/hotsun.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.blue {
+  background-image: url('images/humidity.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.green {
+  background-image: url('images/dew.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

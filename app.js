@@ -1,14 +1,31 @@
 (function () {
-  
-  var app = angular.module("SubThrower", ['ngMaterial']);
 
-  app.controller("subThrowController", ['$scope', '$http', function ($scope, $http) {
+  var app = angular.module("SubThrower", ['ngMaterial', 'ngMessages', 'ngAria', 'ngAnimate']);
+
+  app.controller("subThrowController", ['$scope', '$http', '$mdDialog', function ($scope, $http, $mdDialog) {
     // intial default weather
-    getWeatherByZip(19067, function (data) {
-      $scope.temperature = 1.8 * (data.main.temp - 273) + 32;
-      $scope.humidity = data.main.humidity;
-      $scope.dewpoint = ((1.8 * (data.main.temp - 273) + 32) - ((100 - data.main.humidity) / 5));
-    });
+    // getWeatherByZip(19067, function (data) {
+    //   $scope.temperature = 1.8 * (data.main.temp - 273) + 32;
+    //   $scope.humidity = data.main.humidity;
+    //   $scope.dewpoint = ((1.8 * (data.main.temp - 273) + 32) - ((100 - data.main.humidity) / 5));
+    // });
+    
+    $scope.changeZip = function () {
+      var options = {
+        templateUrl: 'zipDialog/view.html',
+        scope: $scope,
+        preserveScope: true,
+      };
+      $mdDialog
+        .show(options)
+        .finally(function () {
+          options = undefined;
+        });
+    }
+
+    if (typeof $scope.zip === 'undefined') {
+      $scope.changeZip();
+    }
     
     // update with zip code provided
     $scope.updateWeather = function (zip) {
@@ -17,8 +34,9 @@
         $scope.humidity = data.main.humidity;
         $scope.dewpoint = ((1.8 * (data.main.temp - 273) + 32) - ((100 - data.main.humidity) / 5));
       });
+      $mdDialog.hide(confirm, "updated");
     };
-    
+
     function getWeatherByZip(zip, callback) {
       zip = zip ? zip : 19067;
 
@@ -28,5 +46,6 @@
         alert('An error has occured.');
       });
     };
+    
   }]);
 })();

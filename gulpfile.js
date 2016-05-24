@@ -14,7 +14,7 @@ gulp.task('autoReload', function () {
     browserSync.init({
         server: {
           baseDir: "./",
-          reloadDelay: 2000,
+          reloadDelay: 5000,
         }
     });
 

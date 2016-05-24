@@ -1,0 +1,30 @@
+<!--<md-toolbar>
+    <div class="md-toolbar-tools">
+      <h5>
+        <span>Location</span>
+      </h5>
+    </div>
+  </md-toolbar>-->
+<md-subheader class="md-primary md-hue-2" style="background-color: #c851a2; color: white">Location</md-subheader>
+<md-content layout-padding>
+  
+  <form name="zipForm">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Zip Code</label>
+      <input name="zipCode" ng-model="zip" placeholder="12345" md-no-asterisk required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+      <!--<div class="hint" ng-show="zipForm.zipCode.$error !== {}">Zip code of location</div>-->
+
+      <div ng-messages="zipForm.zipCode.$error" role="alert">
+        <div ng-message="required" class="my-message">You must supply a zip code.</div>
+        <div ng-message="pattern" class="my-message">That doesn't look like a valid zip code.
+        </div>
+        <div ng-message="md-maxlength" class="my-message">
+          Don't use the long version silly...we don't need to be that specific...
+        </div>
+      </div>
+    </md-input-container>
+
+    <md-button ng-disabled="zipForm.zipCode.$error.required || zipForm.zipCode.$error.pattern || zipForm.zipCode.$error.md-maxlength"
+      class="md-raised md-primary" ng-click='updateWeather(zip)'>Submit</md-button>
+  </form>
+</md-content>

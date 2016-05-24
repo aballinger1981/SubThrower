@@ -5,31 +5,40 @@
   <meta charset="UTF-8">
   <title>Sub throwing weather app - The best weathering app everszxcv</title>
   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body ng-controller="subThrowController">
   <md-toolbar md-scroll-shrink>
     <div class="md-toolbar-tools">Current Weather</div>
+    
   </md-toolbar>
   <md-content layout-padding>
-    <form name="zipForm">
-      <md-input-container class="md-block" flex-gt-sm>
-        <label>Zip Code</label>
-        <input name="zipCode" ng-model="zip" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
-        <div ng-messages="zipForm.zip.$error" role="alert" multiple>
-          <div ng-message="required" class="my-message">You must supply a zip code.</div>
-          <div ng-message="pattern" class="my-message">That doesn't look like a valid zip code.
-          </div>
-          <div ng-message="md-maxlength" class="my-message">
-            Don't use the long version silly...we don't need to be that specific...
-          </div>
-        </div>
-      </md-input-container>
-      <md-button class="md-raised md-primary" ng-click='updateWeather(zip)'>Submit</md-button>
-    </form>
-    <div>Temperature: {{temperature | number:0}}</div>
-    <div>Humidity: {{humidity | number:0}}%</div>
-    <div>Dewpoint: {{dewpoint | number:0}}</div>
+    <md-grid-list md-cols="3" md-row-height="1:1.15" md-gutter="6px">
+      <md-grid-tile class="red">
+        <md-grid-tile-footer>
+          <h3>{{temperature | number:0}}<ng-hide ng-hide="!temperature">&deg; F</ng-hide>
+            </h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      <md-grid-tile class="blue">
+        <md-grid-tile-footer>
+          <h3>{{humidity | number:0}}
+            <ng-hide ng-hide="!humidity">%</ng-hide>
+          </h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+      <md-grid-tile class="green">
+        <md-grid-tile-footer>
+          <h3>{{dewpoint | number:0}}
+            <ng-hide ng-hide="!dewpoint">&deg; F</ng-hide>
+          </h3>
+        </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+    <md-button class="md-primary md-raised" ng-click="changeZip($event)" flex="100" flex-gt-md="auto">
+      Alert
+    </md-button>
   </md-content>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
