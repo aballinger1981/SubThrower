@@ -1,6 +1,6 @@
 (function () {
   
-  var app = angular.module("SubThrower", []);
+  var app = angular.module("SubThrower", ['ngMaterial']);
 
   app.controller("subThrowController", ['$scope', '$http', function ($scope, $http) {
     // intial default weather

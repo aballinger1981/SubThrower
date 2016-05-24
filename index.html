@@ -1,17 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="SubThrower">
+
 <head>
   <meta charset="UTF-8">
   <title>Sub throwing weather app - The best weathering app everszxcv</title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
 </head>
+
 <body ng-controller="subThrowController">
-  <p>Current Weather</p>
-  <input type='number' ng-model="zip" />
-  <button ng-click='updateWeather(zip)'>Submit</button>
-  <div>Temperature: {{temperature  | number:0}}</div>
-  <div>Humidity: {{humidity | number:0}}%</div>
-  <div>Dewpoint: {{dewpoint | number:0}}</div>
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">Current Weather</div>
+  </md-toolbar>
+  <md-content layout-padding>
+    <form name="zipForm">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Zip Code</label>
+        <input name="zipCode" ng-model="zip" placeholder="12345" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+        <div ng-messages="zipForm.zip.$error" role="alert" multiple>
+          <div ng-message="required" class="my-message">You must supply a zip code.</div>
+          <div ng-message="pattern" class="my-message">That doesn't look like a valid zip code.
+          </div>
+          <div ng-message="md-maxlength" class="my-message">
+            Don't use the long version silly...we don't need to be that specific...
+          </div>
+        </div>
+      </md-input-container>
+      <md-button class="md-raised md-primary" ng-click='updateWeather(zip)'>Submit</md-button>
+    </form>
+    <div>Temperature: {{temperature | number:0}}</div>
+    <div>Humidity: {{humidity | number:0}}%</div>
+    <div>Dewpoint: {{dewpoint | number:0}}</div>
+  </md-content>
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
