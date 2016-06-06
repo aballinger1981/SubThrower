@@ -9,43 +9,18 @@
 </head>
 
 <body ng-controller="subThrowController">
-  <md-toolbar md-scroll-shrink>
-    <div class="md-toolbar-tools">Current Weather</div>
-    
-  </md-toolbar>
-  <md-content layout-padding>
-    <md-grid-list md-cols="3" md-row-height="1:1.15" md-gutter="6px">
-      <md-grid-tile class="red">
-        <md-grid-tile-footer>
-          <h3>{{temperature | number:0}}<ng-hide ng-hide="!temperature">&deg; F</ng-hide>
-            </h3>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-      <md-grid-tile class="blue">
-        <md-grid-tile-footer>
-          <h3>{{humidity | number:0}}
-            <ng-hide ng-hide="!humidity">%</ng-hide>
-          </h3>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-      <md-grid-tile class="green">
-        <md-grid-tile-footer>
-          <h3>{{dewpoint | number:0}}
-            <ng-hide ng-hide="!dewpoint">&deg; F</ng-hide>
-          </h3>
-        </md-grid-tile-footer>
-      </md-grid-tile>
-    </md-grid-list>
-    <md-button class="md-primary md-raised" ng-click="changeZip($event)" flex="100" flex-gt-md="auto">
-      Alert
-    </md-button>
-  </md-content>
+  <a href="currentWeather">Current</a>
+  <a href="Forecast">Forecast</a>
+
+  <div ng-view></div>
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
   <script src="app.js"></script>
 </body>
